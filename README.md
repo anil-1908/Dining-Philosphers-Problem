@@ -9,17 +9,20 @@ intially all philosphers will take left chopstick first and right chopstick next
 1.Intialization of semaphore array of length equal to number of chopsticks
 2.we create a function which is called by first n-1 philospher threads in which they first pick up left chopsticks and then right chopstick and after completion of eating they put back chopsticks down in same order left first and right next
 // Thinking;
+
         semwait(&chop_sticks[i]);
+        
         semwait(&chop_sticks[(i+1)%no_of_phi]);
+        
         //C.S
         printf("philoshore %d started eating \n",i);
         sleep(1);
         printf("philoshore %d completed eating \n",i);
-
         semsignal(&chop_sticks[i]);
         semsignal(&chop_sticks[(i+1)%no_of_phi]);
 3.we create another function which is typically opposite the function we created earlier which is called by last philospher thread in which he/she first pick up right chopstick and then right chopstick and after completion of eating he would put back them in same order
 // Thinking();
+
         semwait(&chop_sticks[(last_phi+1)%5]);
         semwait(&chop_sticks[last_phi]);
         // Eat();
